@@ -1,0 +1,83 @@
+Indentificadores
+Os identificadores em java podem começar com letras, $ ou caracteres de ligação (_). Os identificadores não podem começar com número ou possuir caracteres
+especiais como ponto(.), vírgula(,), etc. Indentificadores válidos: variavel, $variavel, _variavel, ____variavel, ___variavel$teste.
+
+Arquivo de código-fonte
+Dentro de um mesmo arquivo de código-fonte podem existir várias classes. Só pode haver uma classe pública no arquivo, e se houver, o arquivo deve
+ter o mesmo nome da classe pública. Só pode existir uma declaração package no arquivo, com isso, todas as classes deste serão do mesmo pacote, ou seja,
+não é possível ter classes de pacotes diferentes dentro de um mesmo arquivo de código fonte. As declaração import do arquivo valerão para todas as classes
+que estiverem dentro do mesmo. Um arquivo de código fonte não pode ter mais de uma classe pública. Caso não existam classes públicas no arquivo, este
+por sua vez, pode ter qualquer nome.
+
+Modificadores de acesso
+Java possui quatro níveis de acesso e três modificadores de acesso: public, private, protected. Com o modificador public, a classe ou atributo estará
+visível(acessível) para todas as classes independentemente do pacote. O modificador private pode ser aplicado apenas a atributos ou métodos, com ele, apenas
+a própria classe possui acesso ao atributo ou método marcado com este modificador. O modificador protected também não pode ser aplicado para classes. Este
+modificador é semelhante ao acesso default(quando não há um modificador declarado explícitamente), porém se direfe quanto a um detalhe. Os modificadores
+protected ou default são modificadores de pacote, isto é, apenas classes do mesmo pacote podem acessar o atributo ou método declarado com estes modificadores,
+porém no caso do protected, há uma exceção: além das classes do mesmo pacote, as subclasses (classes filhas) da classe que possui o atributo ou método protegido
+também conseguem acessar esses membros, mesmo estando em pacotes diferentes. Isto só é possível através do relacionamento de herança, ou seja, caso uma
+classe filha ue estiver em pacote diferente da classe pai que possui o membro protected tentar acessar esses membros através de uma referência da classe pai,
+ela não conseguirá, pois está em um pacote diferente e só consegue acessar este membro graças a herança. No caso do default, isso não é possível. As classes 
+podem apenas possuem acesso defaut ou public.
+
+Modificadores
+Uma classe pode possuir os modificadores abstract, final ou strictfp, assim como os métodos. Os membros da classe ainda podem receber o modificador static, 
+porém não é possível aplicar este modificador a uma classe, a não ser que a mesma seja uma classe interna. Não é possível combinar os modificadores abstract
+e final, pois são modificadores praticamente opostos. Uma classe marcada com abstract, pode ou não, possuir métodos abstratos (métodos sem corpo de implementação)
+e caso uma classe possua algum método abstrato, mesmo sendo apenas um, ela necessáriamente deve ser uma classe abstrata. O modificador abstract diz que a
+primeira subclasse concreta da hierarquia deve implementar os métodotos marcados com este modificador, é por este motivo que não pode ser combinado com o 
+modificador final. Com o final, uma método não pode ser reescrevido (sobrescrevido), e caso uma classe esteja marcada como final, significa que a mesma não
+pode ser estendida. Isto é exatamente o contrário do modificador abstract, que diz por conceito que uma classe deve ser estendida e seus métodos abstratos devem
+ser implementados. Uma classe abstrata não pode ser instanciada. Uma classe abstrata que estende outra classe abstrata, não precisa implementar os métodos
+da sua classe pai abstrata. A mesma regra serve para implementação de interfaces.
+
+Interfaces
+Uma interface é uma classe 100% abstrata que possui apenas métodos abstratos e constantes. Uma interface por padrão possui o modificador abstract, porém não
+é necessário declará-lo. Todos os atributos de uma interface são estáticos e final, ou seja, são constantes. Todos os métodos de uma interface são abstratos
+(sem corpo de implementação). Uma interface não pode implementar outras interfaces e nem estender outras classes. Uma interface pode estender uma ou várias
+outras interfaces. Interfaces que estendem outras interfaces não precisar implementar os métodos abstratos. Uma interface é um contrato que diz que se uma classe
+concreta implementar esta interfaces, ela deve implementar todos os métodos da mesma, porém como deve ser feita esta implementação fica a cargo da classe concreta.
+
+Sobrescrita/Implementação
+Para sobrescrever ou implementar um método declarado em uma classe pai ou interface e que possui cláusula a throws, a sobrescrita/implementação pode ou não
+declarar também a cláusula throws, caso declare, a exceção não deve ser mais abrangende do que a exceção declarada na assinatura do método da classe pai ou
+interface.
+
+Modificadores
+O modificador synchronized só pode ser aplicado a métodos ou a trechos de códigos dentro de métodos. O modificador native só pode ser aplicado a métodos.
+
+Var-args
+Var-args é um novo recurso do vaja 5 que permite a declaração de uma lista de parâmetros variável em um método. Com var-args, uma método pode receber de 0 
+a 255 parâmetros que são salvos em um vetor de parâmetros. Sintaxe: public void metodo(String... palavras). Deve sempre ser os último parâmetros declarado
+no método.
+
+Membros estáticos
+Variáveis ou métodos estáticos são membros de classe, isto é, não são membros de nenhum instância, eles são compartilhados por todas as instâncias de uma
+determinada classe.
+
+Variáveis
+As variáveis podem ser de instância ou locais. As variáveis de instância podem possuir qualquer um dos três modificadores de acesso, além dos modificadores
+static, final e transiente. Uma variável final deve ser inicializada na sua declaração. No caso de uma variável de instância final, pode ser inicializada no
+construtor. Uma variável final não pode ser reinicializada, ou seja, uma ver inicializada, uma variável final não pode trocar de valor. Caso seja uma variável
+de referência, o objeto que está sendo referenciado por esta variável pode sofrer alterações, porém a própria refeência em si, não pode ser alterada, ou seja,
+não é possível atribuir uma nova referência de outro objeto a uma variável final depois que a mesma foi inicializada. Variáveis locais devem sempre ser
+inicializadas antes da sua utilização e podem possuir apenas o modificador final.
+
+Tipos Primitivos
+Java possuir 8 tipos primitivos: byte, short, int, long, float, double, char e boolean.
+byte - 8 bits / -2^7~2^7-1
+short - 16 bits / -2^15~2^15-1
+int - 32 bits / -2^31~2^31-1
+long - 64 bits / -2^63~2^63-1
+float - 32 bits
+double - 64 bits
+char - 16 bits
+
+Enums
+Enums são classes especiais que permitem a declaração de constantes. Uma enum pode possuir construtores (sem modificadores de acesso, pois o construtor de uma
+enum é sempre privado), atributos e métodos. Todas as constantes declaradas dentro de uma enum são do tipo da própria enum, isto é, a enum MESES possui as
+constantes JANEIRO, FEVEREIRO, etc, que são do tipo MESES. Toda enum possui o método values() que retorna um vetor com todas as constantes declaradas dentro da
+enum. Uma enum pode possuir uma corpo de classe espefícico da constante, que se parece com uma classe anônima e serve para sobrescrever métodos declarados 
+dentro da enum para se obter um comportamento mais específico de uma determinada constante. Enums podem ser declaradas dentro de classes porém nunca dentro de
+métodos.

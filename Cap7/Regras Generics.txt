@@ -1,0 +1,24 @@
+Generics é um mecanismo que possibilita o compilador nos impedir de realizar
+tarefas relacionadas a tipagem que podem gerar exceções em tempo de execução;
+
+O Tipo parametrizado deve ser o mesmo tanto na declaração da variável quanto
+na criação do objeto. Ele também deve ser igual em passagens por parâmetro, atribuições
+e retorno de métodos.
+
+List<?> é diferente de List<Object>
+
+List<? extends Object> é igual a List<Object>
+
+O caractere coringa pode apenas ser utilizaod na declaração de variáveis, ou seja, ele não pode
+ser utilizado na declaração de tipos em classes, métodos, parâmetros e retornos.
+
+A palavra-chave super pode apenas ser utilizada com o caractere coringa.
+
+List<? extends Number> significa que esta variável pode referênciar qualquer lista de Numbers ou um
+subtipo de Number, a lista também pode ser um subtipo de List.
+
+List<? super Number> significa que esta variável pode apenas referênciar lista de Number ou algum supertipo
+de Number, a lista pode ser um subtipo de List.
+
+Não é possível utilizar tipos parametrizados declarados em classes em métodos estáticos, porém é possível utilizar
+Generics em métodos estáticos se o tipo for declarado no método.

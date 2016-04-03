@@ -1,0 +1,29 @@
+O método estático sleep() faz com que a thread atual seja suspensa por um determinado período de tempo. Caso esta thread seja
+interrompida antes da ser dispertada, uma exceção é gerada em tempo de execução.
+
+O método estático yield() faz com que o estado da thread atual seja modificado para ativa(executável) e que um nova thread que possua
+o mesmo nível de prioridade da thread atual seja executada.
+
+Por padrão, uma nova thread possui o mesmo nível de prioridade da thread que a criou. O nível default é 5.
+
+Quando uma nova instância de thread é criada, o seu estado é novo. Quando o método start() é chamado, o estado da thread
+passa a ser ativo, ou executável. Quando uma thread é escolhida pelo agendador de threads para ser executada, o seu estado passa
+a ser em execução. Quando uma thread é bloqueada, suspensa ou colocada em espera, o seu estado ainda continua sendo ativo, e ela
+pode ser executada pelo agendador de threads novamente. Quando o método run() de uma thread é encerrado, o seu estado passa
+a ser desativada, ou morta.
+
+Não é possível chamar o método start() duas vezes na mesma thread, caso isso aconteça, uma exceção é gerada.
+
+O método join() faz a thread atual ser anexada ao final da thread que chamou o método, ou seja, a thread atual irá esperar
+até que a thread que chamou o método join() seja encerrada.
+
+O modificador synchronized faz com que um método ou bloco de código seja executado apenas por uma thread de cada vez, ou seja,
+a thread que estiver executando este código possuirá o bloqueio do objeto. O bloqueio ocorre por objeto e cada objeto possui apenas
+um bloqueio. Quando uma thread bloqueia um objeto, todos os seus métodos não-estáticos que forem sincronizados não
+poderam ser executados por outras threads até que a thread atual libere o objeto do bloqueio. Isso não se aplica aos métodos estáticos
+sincronizados, já que os mesmos pertencem a classe e não ao objeto. No caso dos métodos estáticos sincronizados, quando uma thread
+estiver acessando o seu código, os outros métodos estáticos sincronizados da classe estarão inacessíveis para as outras threads até
+que a thread que possui o bloqueio do objeto do tipo Class que possui este método estático termine a execução do método e libere o objeto.
+
+O método wait() faz que com a thread atual espere a thread que chamou o método até esta enviar uma notificação. Para utilizar os métodos
+wait(), notify() ou notifyAll() é necessário que a thread atual possua o bloqueio do objeto.
